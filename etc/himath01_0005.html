@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>ベクトルの内積と直交</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> ベクトル \(\boldsymbol{a}, \boldsymbol{b}, \boldsymbol{c} \)を
+        $$
+			\boldsymbol{a}=\left(\begin{array}{c}2 \\3 \\-5 \end{array}\right),
+			 \boldsymbol{b}=\left(\begin{array}{c}-3 \\2 \\1 \end{array}\right), 
+			 \boldsymbol{c}=\left(\begin{array}{l}k \\1 \\k \end{array}\right)
+		$$
+        とする. 
+        </p>
+        <ol> 
+        	<li> (1)
+        		内積 \( \boldsymbol{a} \circ \boldsymbol{b} \) を求めなさい.
+        	</li>
+        	<li> (2)
+        		\( \boldsymbol{b} \) と \( \boldsymbol{c} \) が直交 \( (\boldsymbol{b} \circ \boldsymbol{c}=0) \) するように実数 \( k \) を求めなさい.
+        	</li>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                    \( \boldsymbol{a} \circ \boldsymbol{b} = -5 \)
+                </li>
+                <li> (2)
+                	\( k = 1 \)
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <p>
+            	ベクトル \( \boldsymbol{a} = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix} \) と \( \boldsymbol{b} = \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix} \) の内積は次のように計算します：
+				\[
+					\boldsymbol{a} \circ \boldsymbol{b} = a_1 b_1 + a_2 b_2 + a_3 b_3
+				\]
+				（健康情報数学Ⅰでは内積を\( \circ \)で表しました．）
+            </p>
+            <ol>
+            	<li> (1)
+                    \begin{align*}
+						\boldsymbol{a} \circ \boldsymbol{b} =& 2 \times (-3) + 3 \times 2 + (-5)\times 1 \\
+								=& -6 + 6 - 5\\
+								=& -5
+                    \end{align*}
+                </li>
+                <li> (2)
+                	\begin{align*}
+                		\boldsymbol{b} \circ \boldsymbol{c} =& 0 \\
+                		(-3)\times k + 2 \times 1 + 1 \times k =& 0 \\
+                		-3k + 2 + k =& 0\\
+                		-2k + 2 =&  0\\
+                		-2k =& -2 \\
+                		k =& 1
+                	\end{align*}
+                </li>
+            </ol>
+    </body>
+    
+</html>

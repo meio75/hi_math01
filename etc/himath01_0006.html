@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>2次正方行列の2次形式</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> 行列 \( A \) の2次形式 \( \boldsymbol{x}^T A \boldsymbol{x} \) を答えなさい. ただし，
+        	\[
+				\boldsymbol{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}, \quad A = \begin{pmatrix} 3 & 2 \\ 2 & -1 \end{pmatrix}
+			\]
+        	 とする. 
+        </p>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> 
+                    \( \boldsymbol{x}^T A \boldsymbol{x} = 3x_1^2 + 4x_1 x_2 - x_2^2 \)
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <ol>
+            	<li> 
+                    与えられているベクトルと行列について， \( \boldsymbol{x}^T A \boldsymbol{x} \) を計算します.
+                    \( \boldsymbol{x}^T \) は \( 1 \times 2 \)行列（ベクトル），\( A \) は \( 2 \times 2 \)行列，\( \boldsymbol{x} \) は\( 2 \times 1 \)行列（ベクトル）ですので，2次形式の計算結果はスカラーになります.
+                    \begin{align*}
+                    	\boldsymbol{x}^T A \boldsymbol{x} 
+                    		=& \begin{pmatrix} x_1 & x_2 \end{pmatrix} \begin{pmatrix} 3 & 2 \\ 2 & -1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \\
+                    		=& \begin{pmatrix} x_1 & x_2 \end{pmatrix} \begin{pmatrix} 3x_1 + 2x_2 \\ 2x_1 - x_2 \end{pmatrix} \\
+                    		=& x_1 (3x_1 + 2x_2) + x_2 (2x_1 - x_2)\\
+                    		=& 3x_1^2 + 2x_1 x_2 + 2x_1 x_2 - x_2^2\\
+                    		=& 3x_1^2 + 4x_1 x_2 - x_2^2
+                    \end{align*}
+                </li>
+            </ol>
+    </body>
+    
+</html>

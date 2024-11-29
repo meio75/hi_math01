@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>2次正方行列の逆行列</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3> 問題
+        </h3>  
+        <p> 正則行列 \( A, B \) について次の各問いを計算しなさい.
+			$$
+				A=\left(\begin{array}{ll}5 & 2 \\ 3 & 1 \end{array}\right), 
+				B=\left(\begin{array}{cc}1 & -2 \\ -5 & 2 \end{array}\right)
+			$$
+        </p>
+        <ol> 
+        	<li> (1)
+        		\( A^{-1} \)
+        	</li>
+        	<li> (2)
+        		\( A^{-2} \)
+        	</li>
+        	<li> (3)
+        		\( A(B A)^{-1} B \)
+        	</li>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                    \( A^{-1} = \begin{pmatrix} -1 & 2 \\ 3 & -5 \end{pmatrix} \) 
+                </li>
+                <li> (2)
+                	\( A^{-2} = \begin{pmatrix} 7 & -12 \\ -18 & 31 \end{pmatrix} \)
+                </li>
+                <li> (3)
+                	\( A(B A)^{-1} B  = I_2 = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\)
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <p> 「正方行列が正則である」あるいは単に「正則行列」とは，逆行列が存在することを指します． 
+            	行列 \( A \) の逆行列 \( A^{-1} \) は
+                    $$
+                    	A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}
+                    $$
+                    のとき，次の公式で計算できます．
+                    $$
+                    A^{-1} = \frac{1}{\det A } \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}
+                    $$
+                    ここで，\( \det A  \)は行列式で
+                    $$
+                    	 \det A  = ad - bc
+                    $$
+                    です．
+            </p>
+            <ol>
+            	<li> (1)
+                    \begin{align*}
+                    	\det A  =& ad - bc = 5 \times 1 - 2 \times 3 = 5 - 6 = -1\\
+                    	A^{-1} =& \frac{1}{-1} \begin{pmatrix} 1 & -2 \\ -3 & 5 \end{pmatrix} \\
+                    	       =& \begin{pmatrix} -1 & 2 \\ 3 & -5 \end{pmatrix}
+                    \end{align*}
+                </li>
+                <li> (2)
+                	\( A^{-2} \) は \( (A^{-1})^2 \) を意味しますので，\( A^{-1} \) を2乗します．
+                	\begin{align*}
+                		A^{-2} =& A^{-1}  A^{-1} = \begin{pmatrix} -1 & 2 \\ 3 & -5 \end{pmatrix} \begin{pmatrix} -1 & 2 \\ 3 & -5 \end{pmatrix}\\
+                			=& \begin{pmatrix} -1 \times -1 + 2 \times 3 & -1 \times 2 + 2 \times -5 \\ 3 \times -1 + -5 \times 3 & 3 \times 2 + -5 \times -5 \end{pmatrix} \\
+                			=& \begin{pmatrix} 1 + 6 & -2 - 10 \\ -3 - 15 & 6 + 25 \end{pmatrix}\\
+                			=& \begin{pmatrix} 7 & -12 \\ -18 & 31 \end{pmatrix}
+                	\end{align*}
+                </li>
+                <li> (3)
+                	【解法1】\( BA \) を求め，その逆行列を計算します．
+                	\begin{align*}
+                		 BA =& \begin{pmatrix} 1 & -2 \\ -5 & 2 \end{pmatrix} \begin{pmatrix} 5 & 2 \\ 3 & 1 \end{pmatrix}\\
+                		   =&\begin{pmatrix} 5 - 6 & 2 - 2 \\ -25 + 6 & -10 + 2 \end{pmatrix}\\
+                		   =& \begin{pmatrix} -1 & 0 \\ -19 & -8 \end{pmatrix}\\
+                		 \det BA  =& (-1)(-8) - (0)(-19) = 8\\
+                		 (BA)^{-1} =& \frac{1}{8} \begin{pmatrix} -8 & 0 \\ 19 & -1 \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ \frac{19}{8} & -\frac{1}{8} \end{pmatrix}
+                	\end{align*}
+                	次に，\( A(BA)^{-1}B \)を計算します．
+                	$$
+                		A(BA)^{-1}B = \begin{pmatrix} 5 & 2 \\ 3 & 1 \end{pmatrix} \begin{pmatrix} -1 & 0 \\ \frac{19}{8} & -\frac{1}{8} \end{pmatrix} \begin{pmatrix} 1 & -2 \\ -5 & 2 \end{pmatrix}
+                	$$
+                	【解法2】「行列の積の逆行列」の性質：
+                	\( A, B \) が正則行列なら, \( A B\) も正則行列で
+                	$$
+						(A B)^{-1}=B^{-1} A^{-1}
+					$$
+					を使うと，求める行列が簡単になります．
+					\begin{align*}
+						A{\color{blue} (BA)^{-1}}B =& A {\color{blue} A^{-1}B^{-1}}B \\
+							=& I_2 I_2 \\
+							=& I_2 \\
+							=& \begin{pmatrix} 1 & 0\\ 0 & 1 \end{pmatrix}
+					\end{align*}
+					（行列\( A\) の逆行列が\( A^{-1} \)であるとは，\( AA^{-1}= I, A^{-1}A=I \)ということですね）
+                </li>
+            </ol>
+    </body>
+    
+</html>

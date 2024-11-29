@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>3次正方行列のランク（階数）</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> 行列 \(A, B \)について，以下の問いに答えなさい．
+        	$$
+        		A = \begin{pmatrix} 1 & 5 & -3 \\ 2 & 3 & -6 \\ 1 & 1 & -3 \end{pmatrix}  , B = \begin{pmatrix}  1 & 2 & 3 \\ -2 & -1 & 0 \\ 3 & 5 & 4  \end{pmatrix}
+        	$$
+        </p>
+        <ol> 
+        	<li> (1) 
+        		\( A \) のランク（階数）を求めなさい．
+        	</li> (2) 
+        		\( B \) のランク（階数）を求めなさい．
+        	</li>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                    \( \operatorname{rank} A  = 2  \)
+                </li>
+                <li> (2)
+                	\( \operatorname{rank} B  = 3 \)
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <p>
+            	行列のランク（rank, 階数）とは，対応する線形写像の像の次元です．行の基本変形によって階段行列に変形したときの \( 0 \) でない行の個数で求めることができます．<br>
+            	ランクの定義は「行列の列ベクトルのうち，一次独立なベクトルの最大個数」など，さまざまありますが，全て同値です（同じことを言っています）．
+            	ここでは，階段行列に変形することでランクを求めます. 
+            </p>
+            <ol>
+            	<li> (1) 
+            		行の基本変形によって階段行列に変形します．<br>
+            		<ul>
+            			<li> 1行目をそのまま残します．
+            			</li> 
+            			<li> 2行目を \( \text{(2行目)} - 2 \times \text{(1行目)} \) にします．
+            				$$
+            					\to \begin{pmatrix} 1 & 5 & -3 \\  0 & -7 & 0 \\ 1 & 1 & -3 \end{pmatrix}
+            				$$
+            			</li> 
+            			<li>3行目を \( \text{(3行目)} - \text{(1行目)} \) にします. 
+            				$$
+            					 \to \begin{pmatrix} 1 & 5 & -3 \\ 0 & -7 & 0 \\ 0 & -4 & 0 \end{pmatrix}
+            				$$
+            			</li>
+            			<li> 3行目を \( \text{(3行目)} - \frac{-4}{-7} \times \text{(2行目)} \) にします．
+            				$$
+            					\to \begin{pmatrix} 1 & 5 & -3 \\ 0 & -7 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+            				$$
+            			</li>
+            		</ul>
+                    これで階段行列ができました． <br>
+                    各行を見てみると，全ての成分が \( 0 \)ではない行は2つです．よって, 求めるランクは\( 2 \)となります. 
+                    行列 \( A \)のランクは \( \operatorname{rank} A \)と表しますので，\( \operatorname{rank} A = 2  \) と答えてもよいです．
+                </li>
+                <li> (2) 
+            		行の基本変形によって階段行列に変形します．<br>
+            		<ul>
+            			<li> 1行目をそのまま残します．
+            			</li> 
+            			<li> 2行目を \( \text{(2行目)} + 2 \times \text{(1行目)} \)  にします．
+            				$$
+            					\to \begin{pmatrix}1 & 2 & 3 \\ 0 & 3 & 6 \\ 3 & 5 & 4  \end{pmatrix}
+            				$$
+            			</li> 3行目を \( \text{(3行目)} - 3 \times \text{(1行目)} \) にします. 
+            				$$
+            					 \to \begin{pmatrix}  1 & 2 & 3 \\ 0 & 3 & 6 \\ 0 & -1 & -5 \end{pmatrix}
+            				$$
+            			<li>
+            			</li>
+            			<li> 3行目を\( \text{(3行目)} + \frac{-1}{3} \times \text{(2行目)} \)  にします．
+            				$$
+            					\to \begin{pmatrix} 1 & 2 & 3 \\ 0 & 3 & 6 \\ 0 & 0 & -3 \end{pmatrix}
+            				$$
+            			</li>
+            		</ul>
+                    これで階段行列ができました． <br>
+                    各行を見てみると，全ての成分が \( 0 \)ではない行は3つです．よって, 求めるランクは\( 3 \)となります. 
+                    行列 \( B \)のランクは \( \operatorname{rank} B \)と表しますので，\( \operatorname{rank} B = 3  \) と答えてもよいです．
+                </li>
+            </ol>
+    </body>
+    
+</html>

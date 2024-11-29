@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>ベクトルの直交</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> 次のベクトルの組が互いに直交していることを示しなさい.
+        </p>
+        <ol>
+        	<li> (1)
+                  \( \boldsymbol{v}_1=\begin{pmatrix}-4 \\ 3 \end{pmatrix}, \boldsymbol{v}_2=\begin{pmatrix} 6 \\ 8 \end{pmatrix} \)
+            </li>
+            <li> (2)
+               	\( \boldsymbol{w}_1= \begin{pmatrix}-1 \\ 2 \\ -2\end{pmatrix}, \boldsymbol{w}_2=\begin{pmatrix}2 \\ 2 \\ 1\end{pmatrix} \)
+            </li>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                     \begin{align*} 
+                     	\boldsymbol{v}_1 \circ \boldsymbol{v}_2 &= \binom{-4}{3} \circ \binom{6}{8} \\
+                     		&= (-4)\times 6 + 3 \times 8 \\
+                     		&= -24 + 24 \\
+                     		&= 0
+                     \end{align*}
+                     よって，ベクトルの内積が\( 0 \)となるから，\(\boldsymbol{v}_1\) と \(\boldsymbol{v}_2\) は直交している．
+                </li>
+                <li> (2)
+                	\begin{align*}
+                		\boldsymbol{w}_1 \circ \boldsymbol{w}_2 &= \begin{pmatrix}-1 \\ 2 \\ -2\end{pmatrix} \circ \begin{pmatrix}2 \\ 2 \\ 1\end{pmatrix}\\
+                			&= (-1)\times 2 + 2 \times 2 + (-2)\times 1 \\
+                			&= -2 + 4 - 2 \\
+                			&= 0
+                	\end{align*}
+                	よって，ベクトルの内積が\( 0 \)となるから，\(\boldsymbol{w}_1\) と \(\boldsymbol{w}_2\) は直交している．
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <p>
+            	2つのベクトル\( \boldsymbol{a}\) と \( \boldsymbol{b}\) の内積が\( 0 \)であるとき，2つのベクトルは直交しているといいます．
+            	$$
+            		\boldsymbol{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}, 
+            		\boldsymbol{b} = \begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{pmatrix}
+            	$$
+            	のとき，内積（ \(\circ\) )は以下のように計算します．
+            	$$
+            		\boldsymbol{a} \circ \boldsymbol{b} = a_1 \times b_1 + a_2 \times b_2 + \cdots + a_n \times b_n 
+            	$$
+            	ベクトルの内積を計算すると，スカラーになります．
+            </p>
+    </body>
+    
+</html>

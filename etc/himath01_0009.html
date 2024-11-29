@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>基本行列を使って逆行列を表す</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p>
+        	正則行列 \( A \) の逆行列を基本行列 \( P_{(i; c)}, Q_{(i, j)}, R_{(i, j; c)} \) で表しなさい.
+			ただし, 基本行列は以下のように表すこととする. 
+		</p>
+		<table>
+			<tr>
+				<td rowspan = "2"> \( P_{(i; c)} \)</td> <td> \( A \)の左から掛けたとき \( i \) 行目を \( c \) 倍する行列 </td>
+			</tr>
+			<tr>
+				<td>2次単位行列 \( I_2 \) の \( (i, i) \) 成分が \( c \) になった行列  </td>
+			</tr>
+			<tr>
+				<td rowspan = "2"> \( Q_{(i, j)} \)</td> <td> \( A \)の左から掛けたとき \( i \) 行目と \( j \) 行目を交換する置換行列 </td>
+			</tr>
+			<tr>
+				<td>2次単位行列 \( I_2 \) の \( i \) 行目と \( j \) 行目が交換された行列  </td>
+			</tr>
+			<tr>
+				<td rowspan = "2"> \( R_{(i, j; c)} \)</td> <td> \( A \)の左から掛けたとき \( i \) 行目に \( j \) 行目の \( c \) 倍を加える行列 </td>
+			</tr>
+			<tr>
+				<td>2次単位行列 \( I_2 \) の \( (i, j) \) 成分が \( c \) になった行列  </td>
+			</tr>
+		</table>
+		<p>
+			\[
+  				A=\begin{pmatrix}1 & 3 \\ 2 & 5\end{pmatrix}
+			\]
+        </p>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> 
+                    \( A^{-1} = R_{(1,2;-3)} P_{(2,-1)} R_{(2,1;-2)} \) <br>
+                    これ以外にも正解はあります.
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <p>
+            	行列 \( A  \) の逆行列を求めるには，行基本操作を行い，\( A \) を単位行列 \( I = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \) に変形します．その際，各行基本操作に対応する基本行列をかけることで，逆行列が求まります．
+            </p>
+            <ol>
+            	<li> 1. (1,1) 成分を 1 にすることを考えます. <br>
+                    行列 \( A \) の (1,1) 成分はすでに 1 なので，この段階では何も操作は必要ありません．
+                </li>
+                <li> 2. (2,1) 成分を 0 にする. <br>
+                	2 行 1 列の成分（つまり 2）を 0 にするために，1 行目の 1 倍を 2 行目から引きます．
+                	この操作に対応する基本行列 \( R_{(2,1;-2)} \) を使います. 
+					\[
+						R_{(2,1;-2)} = \begin{pmatrix} 1 & 0 \\ -2 & 1 \end{pmatrix}
+					\]
+					を\( A \)の左から掛けると，
+					\[
+						R_{(2,1;-2)} A = \begin{pmatrix} 1 & 0 \\ -2 & 1 \end{pmatrix} \begin{pmatrix} 1 & 3 \\ 2 & 5 \end{pmatrix} = \begin{pmatrix} 1 & 3 \\ 0 & -1 \end{pmatrix}
+					\]
+                </li>
+                <li>3. (2,2) 成分を 1 にする. <br>
+                	2 行2 列の成分を 1 にするために, 2 行目を -1 で割ります.
+					この操作に対応する基本行列 \( P_{(2,-1)} \) を使います.
+					\[
+						P_{(2,-1)} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+					\]
+					を先ほどの計算結果に左から掛けると, 
+					\[
+						P_{(2,-1)} \begin{pmatrix} 1 & 3 \\ 0 & -1 \end{pmatrix} = \begin{pmatrix} 1 & 3 \\ 0 & 1 \end{pmatrix}
+					\]
+                </li>
+                <li> 4. (1,2) 成分を 0 にする. <br>
+                	1 行2 列の成分を 0 にするために, 2 行目の 3 倍を 1 行目から引きます.
+					この操作に対応する基本行列 \( R_{(1,2;-3)} \) を使います.
+					\[
+						R_{(1,2;-3)} = \begin{pmatrix} 1 & -3 \\ 0 & 1 \end{pmatrix}
+					\]
+					を先ほどの計算結果に左から掛けると, 
+					\[
+						R_{(1,2;-3)} \begin{pmatrix} 1 & 3 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+					\]
+					これで単位行列に変形できました.
+                </li>
+                <li>
+                	以上より, 
+                	\[
+                		R_{(1,2;-3)}P_{(2,-1)}R_{(2,1;-2)} A = I_2
+                	\]
+                	で単位行列に変形できることがわかりました. これは\( A^{-1}A=I \)の形になっていると考えると, 
+                	\[
+                		A^{-1} = R_{(1,2;-3)}P_{(2,-1)}R_{(2,1;-2)}
+                	\]
+                	と求まります.<br>
+                	上述とは異なる手順でも単位行列に変形できますので, 正解は複数あります.
+                </li>
+            </ol>
+    </body>
+    
+</html>

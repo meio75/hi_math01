@@ -1,0 +1,37 @@
+/* htmlタグ　番号付き箇条書き（リスト） 
+*/
+ol {
+    list-style-type: none; /* マークをつけない（消す）*/
+    line-height: 2.5; /*文の行高*/
+ }
+/* html タグ　details and summary （折り畳み）
+    https://webfrontend.ninja/html-details-summary-element/
+*/
+details {
+    background-color: #eeeeee;
+    border: 1px solid #dddddd;
+  }
+  
+  details>summary {
+    background-color: #dddddd;
+    border: 1px solid #cccccc;
+    padding: 0.5em;
+  }
+  details>div.body {
+    padding: 0.5em;
+  }
+/* 表
+*/  
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(140 140 140);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+th,
+td {
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+}
+
+  

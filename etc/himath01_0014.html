@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>2次正方行列のランク（階数）と行列式</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> 行列 \(A, B \)について，以下の問いに答えなさい．
+        	$$
+        		A = \begin{pmatrix} 1 & 4 \\  2 & 3 \end{pmatrix}  , B = \begin{pmatrix}  -2 & 1 \\  -6 & 3  \end{pmatrix}
+        	$$
+        </p>
+        <ol> 
+        	<li> (1)
+        		\( A \) のランク（階数）を求めなさい．
+        	</li>
+        	<li> (2)
+        		\( A \) の行列式を求めなさい．
+        	</li>
+        	<li> (3)
+        		\( A \) の逆行列が存在すれば求めなさい．存在しなければ「存在しない」と答えなさい．
+        	</li>
+        	<li> (4)
+        		\( B \) のランク（階数）を求めなさい．
+        	</li>
+        	<li> (5)
+        		\( B \) の行列式を求めなさい．
+        	</li>
+        	<li> (6)
+        		\( B \) の逆行列が存在すれば求めなさい．存在しなければ「存在しない」と答えなさい．
+        	</li>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                    \( \operatorname{rank} A  = 2  \)
+                </li>
+                <li> (2)
+                	\( \vert A \vert = \operatorname{det} A  = -5 \)
+                </li>
+                <li> (3)
+                	\( \frac{1}{5} \begin{pmatrix} -3 & 4 \\ 2 & -1 \end{pmatrix} \) または，
+                	\( \begin{pmatrix} -\frac{3}{5} & \frac{4}{5} \\ \frac{2}{5} & -\frac{1}{5} \end{pmatrix} \)
+                </li>
+                <li> (4)
+                	\( \operatorname{rank} B  = 1  \)
+                </li>
+                <li> (5)
+                	\( \operatorname{det} B  = 0 \)
+                </li>
+                <li> (6) 
+                	存在しない
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <ul>
+            	<li> 行列のランク（rank, 階数）とは，対応する線形写像の像の次元です．行の基本変形によって階段行列に変形したときの \( 0 \) でない行の個数で求めることができます．<br>
+            	ランクの定義は「行列の列ベクトルのうち，一次独立なベクトルの最大個数」など，さまざまありますが，全て同値です（同じことを言っています）．
+            	ここでは，階段行列に変形することでランクを求めます. 
+            	</li>
+            	<li> 2次正方行列 \( A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \) の行列式（determinant）は次の公式で求めることができます．
+            		行列式は\( \vert A \vert \) や \( \operatorname{det}A \) で表します．
+            		$$
+            			\vert A \vert = \operatorname{det}A = a_{11}a_{22} - a_{12}a_{21}
+            		$$
+            	</li>
+            	<li> 行列式が \( 0 \) ではないとき，その行列は正則で逆行列が存在します．行列式が \( 0 \) のとき，その行列は正則ではなく，逆行列が存在しません．<br>
+            		 2次正方行列 \( A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \) の逆行列が存在するとき，
+            		 逆行列 \( A^{-1} \)は次の公式で求めることができます．
+            		 $$
+            		 	A^{-1} = \frac{1}{\vert A \vert } \begin{pmatrix} a_{22} & -a_{12} \\ -a_{21} & a_{11} \end{pmatrix}
+            		 $$
+            	</li>
+            </ul>
+            <ol>
+            	<li> (1) 
+            		行の基本変形によって階段行列に変形します．<br>
+                    2行目を \( \text{(2行目)} - 2 \times \text{(1行目)} \) とすると, 
+                    $$
+                    	\begin{pmatrix} 1 & 4 \\  2 & 3 \end{pmatrix}   \to 
+                    	\begin{pmatrix} 1 & 4 \\  0 & -5  \end{pmatrix}
+                    $$
+                    となります．これで階段行列ができました． <br>
+                    各行を見てみると，全ての成分が \( 0 \)ではない行は2つです．よって, 求めるランクは\( 2 \)となります. 
+                    行列 \( A \)のランクは \( \operatorname{rank} A \)と表しますので，\( \operatorname{rank} A = 2  \) と答えてもよいです．
+                </li>
+                <li> (2)
+                	$$
+                		\vert A \vert = 1 \times 3 - 4 \times 2 =  -5
+                	$$
+                </li>
+                <li> (3) 
+                	前の問いで計算したように, \( \vert A \vert = -5 \) です．行列式が \( 0 \) ではないので、逆行列が存在して，
+                	\begin{align*}
+                		A^{-1} &= \frac{1}{-5} \begin{pmatrix} 3 & -4 \\ -2 & 1 \end{pmatrix} \\
+                			&= \frac{1}{5} \begin{pmatrix} -3 & 4 \\ 2 & -1 \end{pmatrix}\\
+                			&= \begin{pmatrix} -\frac{3}{5} & \frac{4}{5} \\ \frac{2}{5} & -\frac{1}{5} \end{pmatrix}
+                	\end{align*}
+                </li>
+                <li> (4) 行の基本変形によって階段行列に変形します．<br>
+                	2行目を \( \text{(2行目)} - 3 \times \text{(1行目)} \) とすると，
+                	$$
+                		\begin{pmatrix}  -2 & 1 \\  -6 & 3  \end{pmatrix}   \to
+                		\begin{pmatrix}  -2 & 1 \\   0 & 0  \end{pmatrix}
+                	$$
+                	となります．これで階段行列ができました． <br>
+                    各行を見てみると，全ての成分が \( 0 \)ではない行は1つです．よって, 求めるランクは\( 1 \)となります. 
+                    行列 \( B \)のランクは \( \operatorname{rank} (B) \)と表しますので，\( \operatorname{rank}( B ) = 1  \) と答えてもよいです．
+                </li>
+                <li> (5)
+                	$$
+                		\vert B \vert = -2 \times 3 - 1 \times (-6) =  0
+                	$$
+                </li>
+                <li> (6) 
+                	前の問いで計算したように, \( \vert B \vert = 0 \) です．行列式が \( 0 \) であるため，行列 \( B \) は正則でなく，逆行列は存在しません．
+                </li>
+            </ol>
+    </body>
+    
+</html>

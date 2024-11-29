@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>グラムシュミットの手法（2次元ベクトル空間）</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> \( \mathbf{R}^2 \) の次の基底にグラムシュミットの直交化を適用して正規直交基底を求めなさい.
+        	$$
+        		\boldsymbol{w}_1=\begin{pmatrix}2\\-1 \end{pmatrix}, \boldsymbol{w}_2=\begin{pmatrix}-3\\4\end{pmatrix}
+        	$$
+        	ここでグラムシュミットの直交化手法は，2次元ベクトル空間\( V \)の任意の基底を \( \{ \boldsymbol{w}_1, \boldsymbol{w}_2 \} \)とすると，
+        </p>
+        <ol> 
+        	<li> Step 1.
+				\begin{align*}
+					\boldsymbol{v}_1^{\prime} &= \boldsymbol{w}_1 \\
+					\boldsymbol{v}_1 &= \frac{\boldsymbol{v}_1^{\prime}}{\left\|\boldsymbol{v}_1^{\prime}\right\|}
+				\end{align*}
+        	</li>
+        	<li> Step 2.
+        		\begin{align*}
+					\boldsymbol{v}_2^{\prime} &= \boldsymbol{w}_2-\left(\boldsymbol{w}_2^T \boldsymbol{v}_1\right) \boldsymbol{v}_1 \\
+					\boldsymbol{v}_2&=\frac{\boldsymbol{v}_2^{\prime}}{\left\|\boldsymbol{v}_2^{\prime}\right\|}
+        		\end{align*}
+        	</li>
+        <p>によって\( V \) の正規直交基底 \( \{ \boldsymbol{v}_1, \boldsymbol{v}_2 \} \) を得る．
+        </p>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+			<p>
+				$$
+            		\left\{   \begin{pmatrix} \frac{2}{\sqrt{5}} \\ \frac{-1}{\sqrt{5}} \end{pmatrix},  \begin{pmatrix} \frac{1}{\sqrt{5}} \\ \frac{2}{\sqrt{5}} \end{pmatrix} \right\}
+            	$$
+            	または,
+            	$$
+            		\left\{ \frac{1}{\sqrt{5}} \begin{pmatrix} 2 \\ -1 \end{pmatrix}, \frac{1}{\sqrt{5}} \begin{pmatrix} 1 \\ 2 \end{pmatrix} \right\}
+            	$$
+            	と答えてもよい.
+			</p>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <ol>
+            	<li> Step 1. 
+            		最初のベクトル \( \boldsymbol{w}_1\) をそのまま \( \boldsymbol{v}_1^{\prime} \) とします．
+            		$$
+            			\boldsymbol{v}_1^{\prime} = \begin{pmatrix} 2 \\ -1 \end{pmatrix}
+            		$$
+            		ノルムを計算します．
+            		$$
+            			\|\boldsymbol{v}_1^{\prime}\| = \sqrt{2^2 + (-1)^2} = \sqrt{4 + 1} = \sqrt{5}
+            		$$
+            		よって，
+            		\begin{align*}
+            			\boldsymbol{v}_1 &= \frac{\boldsymbol{v}_1^{\prime}}{\left\|\boldsymbol{v}_1^{\prime}\right\|}\\
+            				&= \frac{1}{\sqrt{5}} \begin{pmatrix} 2 \\ -1 \end{pmatrix}\\
+            				&= \begin{pmatrix} \frac{2}{\sqrt{5}} \\ \frac{-1}{\sqrt{5}} \end{pmatrix}
+            		\end{align*}
+                </li>
+                <li> Step 2.
+                	$$
+                		\boldsymbol{v}_2^{\prime} = \boldsymbol{w}_2 - \left( \boldsymbol{w}_2^T \boldsymbol{v}_1 \right) \boldsymbol{v}_1
+                	$$
+                	を計算します．まず，この式の \( \boldsymbol{w}_2^T \boldsymbol{v}_1 \)を計算すると，
+                	\begin{align*}
+                		\boldsymbol{w}_2^T \boldsymbol{v}_1 &= \begin{pmatrix} -3 & 4 \end{pmatrix} \frac{1}{\sqrt{5}}\begin{pmatrix} 2 \\ -1 \end{pmatrix} \\
+                			&= \frac{1}{\sqrt{5}}\begin{pmatrix} -3 & 4 \end{pmatrix}\begin{pmatrix} 2 \\ -1 \end{pmatrix}\\
+                			&= \frac{1}{\sqrt{5}}\left\{ (-3)\times 2 + 4 \times (-1) \right\} \\
+                			&= \frac{1}{\sqrt{5}}(-6 - 4) \\
+                			&= \frac{-10}{\sqrt{5}}
+                	\end{align*}
+                	よって，上の式は，
+                	\begin{align*}
+                		\boldsymbol{v}_2^{\prime} &= \boldsymbol{w}_2 - \frac{-10}{\sqrt{5}} \boldsymbol{v}_1 \\
+                			&= \begin{pmatrix}-3\\4\end{pmatrix} + \frac{-10}{\sqrt{5}} \frac{1}{\sqrt{5}} \begin{pmatrix} 2 \\ -1 \end{pmatrix} \\
+                			&= \begin{pmatrix}-3\\4\end{pmatrix} + \begin{pmatrix} 4 \\ -2 \end{pmatrix} \\
+                			&= \begin{pmatrix} 1 \\ 2 \end{pmatrix}
+                	\end{align*}
+                	ノルムを計算すると,  
+                	\begin{align*}
+                		\|\boldsymbol{v}_2^{\prime}\| &= \sqrt{1^2 + 2^2} \\
+                			&= \sqrt{1 + 4} \\
+                			&= \sqrt{5}
+                	\end{align*}
+                	よって，
+                	\begin{align*}
+                		\boldsymbol{v}_2 &= \frac{1}{\sqrt{5}}\boldsymbol{v}_2^{\prime} \\
+                			&= \frac{1}{\sqrt{5}} \begin{pmatrix} 1 \\ 2 \end{pmatrix}\\
+                			&= \begin{pmatrix} \frac{1}{\sqrt{5}} \\ \frac{2}{\sqrt{5}} \end{pmatrix}
+                	\end{align*}
+                </li>
+            </ol>
+    </body>
+    
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>行列の計算</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> 行列 \(A, B \)を
+        $$
+        	A = \begin{pmatrix} -1 & 0 \\ 2 & 1 \end{pmatrix}, 
+        	\quad B = \begin{pmatrix} 2 & 0 \\ 1 & -2 \end{pmatrix}
+        $$
+        とする. 次の等式を満たす行列 \( X \)を求めよ.
+        </p>
+        <ol> 
+        	<li> (1)
+        		\( 3X - 2B = X + 4A \)
+        	</li>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                    \( X = \begin{pmatrix} 0 & 0 \\ 5 & 0 \end{pmatrix} \)
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <ol>
+            	<li> (1)
+                    スカラーの方程式と同様に計算します．ただし行列は割ることができませんし，掛け算でも左から掛けるのか，右から掛けるのか区別しますので注意が必要です．式を整理します．まず，\( X \) を含む項を左辺に，定数項を右辺に移項します．
+                    $$
+                    	3X - X = 4A + 2B
+                    $$
+                    左辺を簡単にすると，
+                    $$
+                    	2X = 4A + 2B
+                    $$
+                    両辺を 2 で割ります（定数を掛けたり割ったりすることはできます）．
+                    $$
+                    	X = 2A + B
+                    $$
+                    次に，\( A \) と \( B \) の値を代入します．
+                    \begin{align*}
+                    	X =& 2 \begin{pmatrix} -1 & 0 \\ 2 & 1 \end{pmatrix} + \begin{pmatrix} 2 & 0 \\ 1 & -2 \end{pmatrix}\\
+                    		=&  \begin{pmatrix} -2 & 0 \\ 4 & 2 \end{pmatrix} + \begin{pmatrix} 2 & 0 \\ 1 & -2 \end{pmatrix} \\
+                    		=&  \begin{pmatrix} -2 + 2 & 0 + 0 \\ 4 + 1 & 2 - 2 \end{pmatrix}\\
+                    		=& \begin{pmatrix} 0 & 0 \\ 5 & 0 \end{pmatrix}
+                    \end{align*}
+                </li>
+            </ol>
+    </body>
+    
+</html>

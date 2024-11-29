@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>ベクトルのノルムと行列のフロベニウスノルム</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> 次の各問いに答えなさい.
+        </p>
+        <ol> 
+        	<li> (1)
+        		ベクトル \(\begin{pmatrix} 3 \\ -1 \end{pmatrix}\) のノルム（ユークリッドノルム）を求めよ．
+        	</li>
+        	<li> (2)
+        		ベクトル \(\begin{pmatrix} -1 \\ 2 \\ -2 \end{pmatrix}\) のノルム（ユークリッドノルム）を求めよ．
+        	</li>
+        	<li> (3) 
+        		行列 \(\begin{pmatrix} 3 & 2 \\ 2 & -4 \end{pmatrix}\) のノルム（フロベニウスノルム）を求めよ.
+        	</li>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                    \(\sqrt{10}\)
+                </li>
+                <li> (2)
+                	\( 3 \)
+                </li>
+                <li> (3)
+                     \(\sqrt{33}\)
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <ol>
+            	<li> (1)
+                    ベクトル \( \boldsymbol{v} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} \)のノルム（ユークリッドノルム） は次のように計算します．
+					\[
+						\|v\| = \sqrt{v_1^2 + v_2^2}
+					\]
+					（健康情報数学Ⅰでは，ノルムの記号を\(  \| \|\)）としました．)
+					問題にあるベクトルでは，
+                    \begin{align*}
+                    	\|v\| =& \sqrt{3^2 + (-1)^2} \\
+                    		=&  \sqrt{9 + 1} \\
+                    		=&  \sqrt{10}
+                    \end{align*}
+                </li>
+                <li> (2)
+                	ベクトルの各成分の二乗和を計算し，その平方根を求めます．
+                	\begin{align*}
+                		\|v\| =& \sqrt{(-1)^2 + 2^2 + (-2)^2 }\\
+                			=& \sqrt{ 1 + 4 + 4 }\\
+                			=& \sqrt{ 9 }\\
+                			=& 3
+                	\end{align*}
+                </li>
+                <li> (3)
+                	行列のノルムがフロベニウスノルムである場合，行列のすべての成分の2乗の和の平方根を取ります．
+                	行列 \( A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \) のフロベニウスノルムは次のように計算します．
+					\[
+						\|A\| = \sqrt{a_{11}^2 + a_{12}^2 + a_{21}^2 + a_{22}^2}
+					\]
+					問題にある行列では，
+					\begin{align*}
+						\|A\| =& \sqrt{3^2 + 2^2 + 2^2 + (-4)^2} \\
+							=& \sqrt{9 + 4 + 4 + 16} \\
+							=& \sqrt{33}
+					\end{align*}
+                </li>
+            </ol>
+    </body>
+    
+</html>

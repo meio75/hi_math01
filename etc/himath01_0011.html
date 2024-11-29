@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>ベクトルの正規化</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> 次のベクトルを正規化し, 解答欄に答えなさい.
+        </p>
+        <ol> 
+        	<li> (1)
+        		\( \boldsymbol{v} = \begin{pmatrix} 2 \\ -1 \end{pmatrix} \)
+        	</li>
+        	<li> (2)
+        		\( \boldsymbol{w} = \begin{pmatrix} -2 \\ 1 \\ -1 \end{pmatrix} \)
+        	</li>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                    $$
+                    	\begin{pmatrix} \frac{2}{\sqrt{5}} \\ \frac{-1}{\sqrt{5}} \end{pmatrix}
+                    $$
+                    または，
+                    $$
+                    	 \frac{1}{\sqrt{5}} \begin{pmatrix} 2 \\ -1 \end{pmatrix}
+                    $$
+                    （分母を有理化して答えても正解です）
+                </li>
+                <li> (2)
+                    $$
+                    	\begin{pmatrix} \frac{-2}{\sqrt{6}} \\ \frac{1}{\sqrt{6}} \\ \frac{-1}{\sqrt{6}} \end{pmatrix}
+                    $$
+                    または，
+                    $$
+                    	\frac{1}{\sqrt{6}} \begin{pmatrix} -2 \\ 1 \\ -1 \end{pmatrix}
+                    $$
+                    （分母を有理化して答えても正解です）
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <p>
+            ベクトルを正規化するとは，そのノルム（長さ）を1にすることを意味します．  
+			任意のベクトル \( \boldsymbol{a} = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix} \) のノルム（長さ）は次の式で計算されます．
+			$$
+				\|\boldsymbol{a}\| = \sqrt{a_1^2 + a_2^2 + \cdots + a_n^2}
+			$$
+			正規化されたベクトルは次のように計算されます：
+			$$
+				\frac{\boldsymbol{a}}{\|\boldsymbol{a}\|}
+			$$
+			</p>
+            <ol>
+            	<li> (1)
+                    ノルムを計算します．
+                    \begin{align*}
+                    	\|\boldsymbol{v}\| &= \sqrt{2^2 + (-1)^2} \\
+                    		&= \sqrt{4 + 1} \\
+                    		&= \sqrt{5}
+                    \end{align*}
+                    よって，正規化したベクトルは
+                    \begin{align*}
+                    	\frac{1}{\|\boldsymbol{v}\|}\boldsymbol{v} &= \frac{1}{\sqrt{5}} \begin{pmatrix} 2 \\ -1 \end{pmatrix}\\
+                    		 &= \begin{pmatrix} \frac{2}{\sqrt{5}} \\ \frac{-1}{\sqrt{5}} \end{pmatrix}
+                    \end{align*}
+                </li>
+                <li> (2)
+                    ノルムを計算します．
+                    \begin{align*}
+                    	\|\boldsymbol{w}\| &= \sqrt{(-2)^2 + 1^2 + (-1)^2} \\
+                    		&= \sqrt{4 + 1 + 1} \\
+                    		&= \sqrt{6}
+                    \end{align*}
+                    よって，正規化したベクトルは
+                    \begin{align*}
+                    	\frac{1}{\|\boldsymbol{w}\|}\boldsymbol{w} &= \frac{1}{\sqrt{6}} \begin{pmatrix} -2 \\ 1 \\ -1 \end{pmatrix}\\
+                    		 &= \begin{pmatrix} \frac{-2}{\sqrt{6}} \\ \frac{1}{\sqrt{6}} \\ \frac{-1}{\sqrt{6}} \end{pmatrix}
+                    \end{align*}
+                </li>
+            </ol>
+    </body>
+    
+</html>

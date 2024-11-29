@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>対称行列</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> 次の4次正方行列 \( A \)が対称行列のとき，\( a, b, c, d, e \)の値は何か.
+        	\[
+				A = \begin{pmatrix} 1 & 2 & b & c \\ a & 4 & -1 & -2 \\ 3 & d & -1 & e \\ -2 & -2 & 3 & 4 \end{pmatrix}
+			\]
+        </p>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> 
+                    \( a = 2, \quad b = 3, \quad c = -2, \quad d = -1, \quad e = 3 \)
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <p>
+            	対称行列の性質として、行列の任意の成分について \( A_{ij} = A_{ji} \) が成り立ちます．行列の主対角線を中心に対称な位置にある成分は等しくなります．
+            </p>
+            <ol>
+            	<li> \( A_{12} = A_{21} \) すなわち，\( 2 = a \) </li>
+				<li> \( A_{13} = A_{31} \) すなわち，\( b = 3 \) </li>
+				<li> \( A_{14} = A_{41} \) すなわち，\( c = -2 \) </li>
+				<li> \( A_{23} = A_{32} \) すなわち，\( -1 = d \) </li>
+				<li> \( A_{24} = A_{42} \) すなわち，\( -2 = -2 \) （この式は既に成り立っているため、追加の条件は不要です） </li>
+				<li> \( A_{34} = A_{43} \) すなわち，\( e = 3 \) </li>
+            </ol>
+    </body>
+    
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>行列の固有値・固有ベクトル</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> 以下の問いに答えなさい．
+        </p>
+        <ol> 
+        	<li> (1) 行列 \( A \)の固有値・固有ベクトルを求めなさい．
+        		\( A = \begin{pmatrix} 1 & 4 \\ 2 & 3 \end{pmatrix} \)
+        	</li>
+        	<li> (2) 行列 \( B \)の固有値・固有ベクトルを求めなさい．
+        		\( B = \begin{pmatrix} 0 & -2 & -1 \\ 0 & -2 & -1 \\ 2 & 1 & 2 \end{pmatrix} \)
+        	</li>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1) 
+                <ul>
+                    <li> 固有値 \(  5 \)のとき，固有ベクトル \(  \begin{pmatrix} 1 \\ 1 \end{pmatrix} \) 
+                    </li>
+                    <li> 固有値 \( -1 \)のとき，固有ベクトル \(  \begin{pmatrix} -2 \\ 1 \end{pmatrix} \) 
+                    </li>
+                </li>
+                </ul>
+                <li> (2) 
+                <ul>
+                	<li> 固有値 \( 2 \)のとき，固有ベクトル \(  \begin{pmatrix}  -1 \\ -1 \\ 1  \end{pmatrix} \)
+                	</li>
+                	<li> 固有値 \( 3 \)のとき，固有ベクトル \(  \begin{pmatrix}  3 \\ 2 \\ -4  \end{pmatrix} \)
+                	</li>
+                	<li> 固有値 \( 4 \)のとき，固有ベクトル \(  \begin{pmatrix}  1 \\ 1 \\ -3  \end{pmatrix} \)
+                	</li>
+                </ul>
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <p> 【解答の方針】 <br>
+            	正方行列 \( A \) に対して，\( \lambda, \boldsymbol{x}  \) が
+            	$$
+            		A \boldsymbol{x} = \lambda \boldsymbol{x}
+            	$$
+            	を満たすとき，\( \lambda \) を \( A \) の固有値（ギリシャ文字のラムダで書くことが多い），
+            	\( \boldsymbol{x}  \) を \( A \) の固有値 \( \lambda \) に対する固有ベクトルとよびます．<br>
+            	\( \boldsymbol{x} = \mathbf{0}  \) とすると，\( A \mathbf{0} = \lambda \mathbf{0} \) は
+            	任意の \( \lambda \) に対して成り立ってしまうので，\( \boldsymbol{x} = \mathbf{0}  \) は固有ベクトルに含めません．<br>
+            	<b> 固有値問題の解法 </b> <br>
+            	① 固有方程式（特性方程式ともいう） \( \operatorname{ det } (A - \lambda I) = 0 \) から \( \lambda \) を求めます．<br>
+            	② （それぞれの \( \lambda \) について）\( (A - \lambda I) \boldsymbol{x} = \mathbf{0} \) を解いて \( \boldsymbol{x} \) を求めます．            	
+            </p>
+            <p> 【解答例】
+            </p>
+            <ol>
+            	<li> (1) 
+                    <ul>
+                    	<li> 固有方程式から固有値を求めます. <br>
+                    		\begin{align*}
+                    			A - \lambda I &= \begin{pmatrix} 1 & 4 \\ 2 & 3 \end{pmatrix} - \begin{pmatrix} \lambda & 0 \\ 0 & \lambda \end{pmatrix} \\
+                    				&= \begin{pmatrix}1 - \lambda & 4 \\ 2 & 3 - \lambda \end{pmatrix} \\
+                    			\operatorname{ det } (A - \lambda I) &= \begin{vmatrix} 1 - \lambda & 4 \\ 2 & 3 - \lambda \end{vmatrix} \\
+                    				&= (1 - \lambda)(3 - \lambda) - 4 \times 2 \\
+                    				&= 3 - 3\lambda - \lambda + \lambda^2 - 8 \\
+                    				&= \lambda^2 - 4\lambda - 5
+                    		\end{align*}
+                    		固有方程式は
+                    		\begin{align*}
+                    			\lambda^2 - 4\lambda - 5 =& 0 \\
+                    			(\lambda - 5)(\lambda + 1) =& 0
+                    		\end{align*}
+                    		よって，固有値は
+                    		$$
+                    			\lambda_1 = 5, \quad \lambda_2 = -1
+                    		$$
+                    	</li>
+                    	<li>それぞれの \( \lambda \) について固有ベクトルを求めます．<br>
+                    		(i) 固有値 \( \lambda_1 = 5 \) について
+                    		\begin{align*}
+                    			A - 5I &= \begin{pmatrix} 1 - 5 & 4 \\ 2 & 3 - 5 \end{pmatrix} \\
+                    				&= \begin{pmatrix} -4 & 4 \\ 2 & -2 \end{pmatrix}
+                    		\end{align*}  
+                    		\( (A - \lambda I) \boldsymbol{x} = \mathbf{0} \) を
+                    		$$
+                    			\begin{pmatrix} -4 & 4 \\ 2 & -2 \end{pmatrix} %
+                    			\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} %
+                    			= \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+                    		$$
+                    		と表すと，
+                    		$$
+                    			 x_1 = x_2
+                    	    $$
+                    	    となるので，固有ベクトルを \(  \begin{pmatrix} 1 \\ 1 \end{pmatrix} \) としてよい．<br>
+                    	    (補足）この場合， \(  \begin{pmatrix} 2 \\ 2 \end{pmatrix} \) や  \(  \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix} \) などと答えても正解となります．<br>
+                    	    \(  \begin{pmatrix} 1 \\ 1 \end{pmatrix} \) のスカラー倍\(  s \begin{pmatrix} 1 \\ 1 \end{pmatrix} , s \neq 0\)を固有ベクトルとして答えるのが正確ですが，
+                    	    健康情報数学Ⅰでは，スカラー倍の形で答えずに，単に \(  \begin{pmatrix} 1 \\ 1 \end{pmatrix} \) と答えても正解としています． <br>
+                    	    (ii) 固有値 \( \lambda_2 = -1 \) について
+                    		\begin{align*}
+                    			A - (-1)I &= \begin{pmatrix} 1 - (-1)  & 4 \\ 2 & 3 - (-1) \end{pmatrix} \\
+                    				&= \begin{pmatrix} 2 & 4 \\ 2 & 4 \end{pmatrix}
+                    		\end{align*}  
+                    		\( (A - \lambda I) \boldsymbol{x} = \mathbf{0} \) を
+                    		$$
+                    			\begin{pmatrix} 2 & 4 \\ 2 & 4 \end{pmatrix} %
+                    			\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} %
+                    			= \begin{pmatrix} 0 \\ 0 \end{pmatrix}
+                    		$$
+                    		と表すと，
+                    		$$
+                    			 x_1 = -2 x_2
+                    	    $$
+                    	    となるので，固有ベクトルを \(  \begin{pmatrix} -2 \\ 1 \end{pmatrix} \) としてよい．<br>
+                    	    (補足）この場合， \(  \begin{pmatrix} -4 \\ 2 \end{pmatrix} \) や  \(  \begin{pmatrix} \frac{-2}{\sqrt{5}} \\ \frac{1}{\sqrt{5}} \end{pmatrix} \) などと答えても正解となります．
+                    	    \(  \begin{pmatrix} -2 \\ 1 \end{pmatrix} \) のスカラー倍\(  t \begin{pmatrix} -2 \\ 1 \end{pmatrix} , t \neq 0\)を固有ベクトルとして答えるのが正確ですが，
+                    	    健康情報数学Ⅰでは，スカラー倍の形で答えずに，単に \(  \begin{pmatrix} -2 \\ 1 \end{pmatrix} \) と答えても正解としています．
+                    	</li>
+                    </ul>                    
+                </li>
+                <li> (2)
+                	<ul>
+                		<li> 固有方程式から固有値を求めます. <br>
+                    		\begin{align*}
+                    			A - \lambda I &= \begin{pmatrix} 3 & -2 & -1 \\ 0 & 1 & -1 \\ 2 & 1 & 5 \end{pmatrix} - \begin{pmatrix} \lambda & 0 & 0 \\ 0 & \lambda & 0 \\ 0 & 0& \lambda\end{pmatrix} \\
+                    				&= \begin{pmatrix}3-\lambda & -2 & -1 \\ 0 & 1-\lambda & -1 \\ 2 & 1 & 5-\lambda \end{pmatrix} 
+                    		\end{align*}
+                    		行列式を計算するために1行目を使って余因子展開をします．
+                    		\begin{align*}
+                    			\operatorname{ det } (A - \lambda I) &= \begin{vmatrix} 3-\lambda & -2 & -1 \\ 0 & 1-\lambda & -1 \\ 2 & 1 & 5-\lambda \end{vmatrix} \\
+                    				&= (3-\lambda) \begin{vmatrix} 1-\lambda & -1 \\ 1 & 5-\lambda \end{vmatrix}- (-2) \begin{vmatrix} 0 & -1 \\ 2 & 5-\lambda \end{vmatrix} %
+                    				+ (-1) \begin{vmatrix} 0 & 1-\lambda \\ 2 & 1 \end{vmatrix} \\
+                    				&= (3-\lambda)(\lambda^2 - 6\lambda + 6) + 2 \times 2 + (-1)(-2 + 2\lambda) \\
+                    				&= -\lambda^3 + 9\lambda^2 - 26\lambda + 24
+                    		\end{align*}
+                    		固有方程式は
+                    		\begin{align*}
+                    			-\lambda^3 + 9\lambda^2 - 26\lambda + 24 =& 0 \\
+                    			(\lambda - 2)(\lambda - 3)(\lambda - 4) =& 0
+                    		\end{align*}
+                    		よって，固有値は
+                    		$$
+                    			\lambda_1 = 2, \quad \lambda_2 = 3, \quad \lambda_3 = 4
+                    		$$	
+                		</li>
+                		<li>それぞれの \( \lambda \) について固有ベクトルを求めます．<br>
+                    		(i)  固有値 \( \lambda_1 = 2 \) について
+                    		\begin{align*}
+                    			A - 2I &= \begin{pmatrix} 3-2 & -2 & -1 \\ 0 & 1-2 & -1 \\ 2 & 1 & 5-2  \end{pmatrix} \\
+                    				&= \begin{pmatrix} 1 & -2 & -1 \\ 0 & -1 & -1 \\ 2 & 1 & 3  \end{pmatrix}
+                    		\end{align*}  
+                    		\( (A - \lambda I) \boldsymbol{x} = \mathbf{0} \) を
+                    		$$
+                    			\begin{pmatrix}1 & -2 & -1 \\ 0 & -1 & -1 \\ 2 & 1 & 3  \end{pmatrix} %
+                    			\begin{pmatrix} x_1 \\ x_2 \\ x_3\end{pmatrix} %
+                    			= \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
+                    		$$
+                    		と表すと，次の連立方程式が得られます．
+                    		\begin{align*}
+                    			  1x_1 - 2x_2 - x_3 =& 0 \\
+                    			  -x_2 - x_3 =& 0 \\
+                    			  2x_1 + x_2 + 3x_3 =& 0
+                    	    \end{align*}
+                    	    この連立方程式を次のように解きます．第2式より，\( x_2 = -x_3 \) で､これを第1式に代入すると
+                    	    \begin{align*}
+                    	    	x_1 - 2(-x_3) - x_3 =& 0 \\
+                    	    	x_1 + 2x_3 - x_3 =& 0 \\
+                    	    	x_1 + x_3 =& 0 \\
+                    	    	x_1 =& -x_3
+                    	    \end{align*}
+                    	    これらを第3式に代入すると
+                    	    \begin{align*}
+                    	    	2x_1 + x_2 + 3x_3 =& 0 \\
+                    	    	2(-x_3) + (-x_3) + 3x_3 =& 0 \\
+                    	    	-2x_3 - x_3 + 3x_3 =& 0 \\
+                    	    	0 =& 0
+                    	    \end{align*}
+                    	    これは成り立つので，新たな制約はありません．<br>
+                    	    \( x_1 = -x_3, \, x_2 = -x_3 \)だったので，
+                    	    \begin{align*}
+                    	    	\begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &= \begin{pmatrix} -x_3 \\ -x_3 \\ x_3 \end{pmatrix} \\
+                    	    		&= x_3 \begin{pmatrix} -1 \\ -1 \\ 1 \end{pmatrix}
+                    	    \end{align*}
+                    	    となるので，固有ベクトルを \(  \begin{pmatrix} -1 \\ -1 \\ 1 \end{pmatrix} \) としてよい．<br>
+                    	    (補足）この場合， \(  \begin{pmatrix} -2 \\ -2 \\ 2\end{pmatrix} \) や  \(  \begin{pmatrix}- \frac{1}{\sqrt{3}} \\ -\frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \end{pmatrix} \) などと答えても正解となります．<br>
+                    	    \(  \begin{pmatrix} -1 \\ -1 \\ 1 \end{pmatrix} \) のスカラー倍\(  t \begin{pmatrix} -1 \\ -1 \\ 1  \end{pmatrix} , t \neq 0\)を固有ベクトルとして答えるのが正確ですが，
+                    	    健康情報数学Ⅰでは，スカラー倍の形で答えずに，単に \(  \begin{pmatrix}  -1 \\ -1 \\ 1  \end{pmatrix} \) と答えても正解としています． <br>
+                    	    (ii) 固有値 \( \lambda_2 = 3 \) について
+                    	    \begin{align*}
+                    			A - 3I &= \begin{pmatrix} 3-3 & -2 & -1 \\ 0 & 1-3 & -1 \\ 2 & 1 & 5-3  \end{pmatrix} \\
+                    				&= \begin{pmatrix} 0 & -2 & -1 \\ 0 & -2 & -1 \\ 2 & 1 & 2  \end{pmatrix}
+                    		\end{align*}  
+                    		\( (A - \lambda I) \boldsymbol{x} = \mathbf{0} \) を
+                    		$$
+                    			\begin{pmatrix}0 & -2 & -1 \\ 0 & -2 & -1 \\ 2 & 1 & 2   \end{pmatrix} %
+                    			\begin{pmatrix} x_1 \\ x_2 \\ x_3\end{pmatrix} %
+                    			= \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
+                    		$$
+                    		と表すと，次の連立方程式が得られます．
+                    		\begin{align*}
+                    			  0x_1 - 2x_2 - x_3 =& 0 \\
+                    			  0x_1 - 2x_2 - x_3 =& 0 \\
+                    			  2x_1 + x_2 + 2x_3 =& 0
+                    	    \end{align*}
+                    	    この連立方程式を次のように解きます．第1式と第2式は同じ式です．第1式より，\( x_3 = -2x_2 \) で､これを第3式に代入すると
+                    	    \begin{align*}
+                    	    	2x_1 + x_2 + 2(-2x_2) =& 0 \\
+                    	    	2x_1 + x_2 - 4x_2 =& 0 \\
+                    	    	2x_1 - 3x_2 =& 0 \\
+                    	    	x_1 = \frac{3}{2}x_2
+                    	    \end{align*}                    	    
+                    	    これらより，
+                    	    \begin{align*}
+                    	    	\begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &= \begin{pmatrix} \frac{3}{2} x_2 \\ x_2 \\ -2 x_2 \end{pmatrix} \\
+                    	    		&= x_2 \begin{pmatrix} \frac{3}{2} \\ 1 \\ -2  \end{pmatrix}
+                    	    \end{align*}
+                    	    となるので，固有ベクトルを \(  \begin{pmatrix} 3 \\ 2 \\ -4  \end{pmatrix} \) としてよい．<br>
+                    	    (iiI) 固有値 \( \lambda_2 = 4 \) について
+                    	    \begin{align*}
+                    			A - 4I &= \begin{pmatrix} 3-4 & -2 & -1 \\ 0 & 1-4 & -1 \\ 2 & 1 & 5-4  \end{pmatrix} \\
+                    				&= \begin{pmatrix} -1 & -2 & -1 \\ 0 & -3 & -1 \\ 2 & 1 & 1  \end{pmatrix}
+                    		\end{align*}  
+                    		\( (A - \lambda I) \boldsymbol{x} = \mathbf{0} \) を
+                    		$$
+                    			\begin{pmatrix}-1 & -2 & -1 \\ 0 & -3 & -1 \\ 2 & 1 & 1   \end{pmatrix} %
+                    			\begin{pmatrix} x_1 \\ x_2 \\ x_3\end{pmatrix} %
+                    			= \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
+                    		$$
+                    		と表すと，次の連立方程式が得られます．
+                    		\begin{align*}
+                    			  -x_1 - 2x_2 - x_3  =& 0 \\
+                    			  -3x_2 - x_3  =& 0 \\
+                    			  2x_1 + x_2 + x_3 =& 0
+                    	    \end{align*}
+                    	    この連立方程式を次のように解きます．第2式より，\( x_3 = -3x_2 \) で､これを第1式に代入すると
+                    	    \begin{align*}
+                    	    	-x_1 - 2x_2 - (-3x_2) =& 0 \\
+                    	    	-x_1 - 2x_2 + 3x_2 =& 0 \\
+                    	    	-x_1 + x_2 =& 0 \\
+                    	    	x_1 = x_2
+                    	    \end{align*}                    	    
+                    	    これらを第3式に代入すると，常に成り立つ式が確かめられます．よって，
+                    	    \begin{align*}
+                    	    	\begin{pmatrix} x_1 \\ x_2 \\ x_3 \end{pmatrix} &= \begin{pmatrix} x_2 \\ x_2 \\ -3x_2 \end{pmatrix} \\
+                    	    		&= x_2 \begin{pmatrix} 1 \\ 1 \\ -3  \end{pmatrix}
+                    	    \end{align*}
+                    	    となるので，固有ベクトルを \(  \begin{pmatrix} 1 \\ 1 \\ -3  \end{pmatrix} \) としてよい．<br>
+                    	</li>
+                	</ul>
+                </li>
+            </ol>
+    </body>
+    
+</html>

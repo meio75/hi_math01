@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>3次正方行列の余因子と行列式・逆行列</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p> 行列 \( A \)について，以下の問いに答えなさい．
+        $$
+        	A = \begin{pmatrix} 3 & -2 & -1 \\ 0 & 1 & -1 \\ 2 & 1 & 5 \end{pmatrix}
+        $$
+        </p>
+        <ol> 
+        	<li> (1) 
+        		行列 \( A \) の各 \( (i, j) \) 成分 \( a_{ij} \) の余因子 \( \tilde{ A }_{ij}  \) を求めなさい．
+        	</li>
+        	<li> (2) 
+        		\( A \) の行列式を求めなさい．
+        	</li>
+        	<li> (3) 
+        		\( A \) の逆行列を求めなさい．
+        		$$
+        			A^{-1}=\frac{1}{\operatorname{det} A} % 
+        			\begin{pmatrix} \tilde{A}_{11} & \cdots & \tilde{A}_{n 1} \\
+        				\vdots & & \vdots \\
+        				\tilde{A}_{1 n} & \cdots & \tilde{A}_{n n} \end{pmatrix}
+        		$$
+        	</li>
+        </ol>
+
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                    \begin{align*}
+                    	 \tilde{ A }_{11} &= 6 \\
+                    	 \tilde{ A }_{12} &= -2 \\
+                    	 \tilde{ A }_{13} &= -2 \\
+                    	 \tilde{ A }_{21} &= 9 \\
+                    	 \tilde{ A }_{22} &= 17 \\
+                    	 \tilde{ A }_{23} &= -7 \\
+                    	 \tilde{ A }_{31} &= 3 \\
+                    	 \tilde{ A }_{32} &= 3 \\
+                    	 \tilde{ A }_{33} &= 3 \\
+                    \end{align*}
+                </li>
+                <li> (2)
+                	\( \operatorname{ det } A = 24 \)
+                </li>
+                <li> (3)
+                	\begin{align*}
+                		A^{-1} &= \frac{1}{24} %
+                			\begin{pmatrix} 6 & 9 & 3 \\ -2 & 17 & 3 \\ -2 & -7 & 3 \end{pmatrix} \\
+                			&= \begin{pmatrix} \frac{1}{4} & \frac{3}{8} & \frac{1}{8} \\ %
+                			-\frac{1}{12} & \frac{17}{24} & \frac{1}{8} \\ %
+                			-\frac{1}{12} & -\frac{7}{24} & \frac{1}{8} \end{pmatrix}
+                	\end{align*}
+                </li>
+            </ol>
+        </details>
+        <br>
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <p>【解答の方針】
+            </p>
+            <ul>
+            	<li> 余因子の定義：余因子 \( \tilde{A}_{ij} \) は，以下で計算されます．
+            		$$
+            			\tilde{A}_{ij} = (-1)^{i+j} M_{ij}
+            		$$
+            		ここで \( M_{ij} \) は、\( a_{ij} \) を含む行と列を除いた部分行列の行列式です．
+            	</li>
+            	<li> 行列式は余因子展開を用いて計算できます．
+            		例えば，3次正方行列について「1行目に対する余因子展開」を考えた場合，
+            		$$
+            			\operatorname{ det } A = a_{11} \tilde{A}_{11} + a_{12} \tilde{A}_{12} + a_{13} \tilde{A}_{13}
+            		$$
+            		で行列式が計算できます．「2行目に対する余因子展開」の場合は，
+            		$$
+            			\operatorname{ det } A = a_{21} \tilde{A}_{21} + a_{22} \tilde{A}_{22} + a_{23} \tilde{A}_{13}
+            		$$
+            		で行列式が計算できます．「3行目に対する余因子展開」の場合は，
+            		$$
+            			\operatorname{ det } A = a_{31} \tilde{A}_{31} + a_{32} \tilde{A}_{32} + a_{33} \tilde{A}_{13}
+            		$$
+            		で行列式が計算できます．これらの計算の結果は同じになります．
+            		余因子展開を用いて行列式を計算するとき，いずれかひとつの行に対する余因子展開を用いて計算すればよいです．
+            	</li>
+            	<li> 正則行列の逆行列は，次の公式を使って求められます．
+            		$$
+        			A^{-1}=\frac{1}{\operatorname{det} A} % 
+        			\begin{pmatrix} \tilde{A}_{11} & \cdots & \tilde{A}_{n 1} \\
+        				\vdots & & \vdots \\
+        				\tilde{A}_{1 n} & \cdots & \tilde{A}_{n n} \end{pmatrix}
+        			$$
+        			上の式の行列の部分ですが，余因子を（ \( \tilde{A}_{ij} \)を \( (i,j) \)成分として ）並べた行列を
+        			<b> 転置 </b>したものになっています．
+            	</li>
+            </ul>
+            <p>【解答例】
+            </p>
+            <ol>
+            	<li> (1) 各成分の余因子
+            		<ul>
+            			<li> \( (1,1) \) 成分 \( a_{11} = 3 \) の場合の余因子
+                    	<ul>
+                    		<li> 符号の部分を計算します．<br>
+                    			 \( i+j = 1+1 = 2 \) より， \( (-1)^2 = +1 \) ．
+                    		</li>
+                    		<li> 部分行列（1行目と1列目を除いた行列）は，
+                    			$$ 
+                    				\begin{pmatrix} 1 & -1 \\ 1 & 5 \end{pmatrix}
+                    			$$
+                    			となり，この部分行列の行列式は <br>
+                    			\( 1 \times 5 - 1 \times (-1) = 5 + 1 = 6 \) <br>
+                    			である．よって，求める余因子は <br>
+                    			\(  \tilde{ A }_{11} =  1 \times 6 = 6 \) 
+                    		</li>                    	
+                    	</ul>
+                        </li> 
+                        <li> \( (1,2) \) 成分 \( a_{12} = -2 \) の場合の余因子
+                        <ul>
+                        	<li> 符号の部分を計算します．<br>
+                    			 \( i+j = 1+2 = 3 \) より， \( (-1)^3 = -1 \) ．
+                    		</li>
+                    		<li> 部分行列（1行目と2列目を除いた行列）は，
+                    			$$ 
+                    				\begin{pmatrix} 0 & -1 \\ 2 & 5 \end{pmatrix}
+                    			$$
+                    			となり，この部分行列の行列式は <br>
+                    			\( 0 \times 5 - 2 \times (-1) = 0 + 2 = 2 \) <br>
+                    			である．よって，求める余因子は <br>
+                    			\(  \tilde{ A }_{12} = (-1) \times 2 = -2 \) 
+                    		</li>
+                    	</ul>
+                    	</li>
+                    	<li> \( (1,3) \) 成分 \( a_{13} = -1 \) の場合の余因子
+                        <ul>
+                        	<li> 符号の部分を計算します．<br>
+                    			 \( i+j = 1+3 = 4 \) より， \( (-1)^4 = 1 \) ．
+                    		</li>
+                    		<li> 部分行列（1行目と3列目を除いた行列）は，
+                    			$$ 
+                    				\begin{pmatrix} 0 & 1 \\ 2 & 1 \end{pmatrix}
+                    			$$
+                    			となり，この部分行列の行列式は <br>
+                    			\( 0 \times 1 - 2 \times 1 = 0 - 2 = -2 \) <br>
+                    			である．よって，求める余因子は <br>
+                    			\(  \tilde{ A }_{13}  = 1 \times (-2) = -2 \) 
+                    		</li>
+                    	</ul>
+                    	</li>
+                    	<li> \( (2,1) \) 成分 \( a_{21} = 0 \) の場合の余因子
+                        <ul>
+                        	<li> 符号の部分を計算します．<br>
+                    			 \( i+j = 2+1 = 3 \) より， \( (-1)^3 = -1 \) ．
+                    		</li>
+                    		<li> 部分行列（2行目と1列目を除いた行列）は，
+                    			$$ 
+                    				\begin{pmatrix} -2 & -1 \\ 1 & 5 \end{pmatrix}
+                    			$$
+                    			となり，この部分行列の行列式は <br>
+                    			\( (-2) \times 5 - (-1) \times 1 = -10 + 1 = -9 \) <br>
+                    			である．よって，求める余因子は <br>
+                    			\(  \tilde{ A }_{21} = (-1) \times (-9) = 9 \) 
+                    		</li>
+                    	</ul>
+                    	</li>
+                    	<li> \( (2,2) \) 成分 \( a_{22} = 1 \) の場合の余因子
+                        <ul>
+                        	<li> 符号の部分を計算します．<br>
+                    			 \( i+j = 2+2 = 4 \) より， \( (-1)^4 = 1 \) ．
+                    		</li>
+                    		<li> 部分行列（2行目と2列目を除いた行列）は，
+                    			$$ 
+                    				\begin{pmatrix} 3 & -1 \\ 2 & 5 \end{pmatrix}
+                    			$$
+                    			となり，この部分行列の行列式は <br>
+                    			\( 3 \times 5 - (-1) \times 2 = 15 + 2 = 17 \) <br>
+                    			である．よって，求める余因子は <br>
+                    			\(  \tilde{ A }_{22} = 1 \times 17 = 17 \) 
+                    		</li>
+                    	</ul>
+                    	</li>
+                    	<li> \( (2,3) \) 成分 \( a_{23} = -1 \) の場合の余因子
+                        <ul>
+                        	<li> 符号の部分を計算します．<br>
+                    			 \( i+j = 2+3 = 5 \) より， \( (-1)^5 = -1 \) ．
+                    		</li>
+                    		<li> 部分行列（2行目と3列目を除いた行列）は，
+                    			$$ 
+                    				\begin{pmatrix} 3 & -2 \\ 2 & 1 \end{pmatrix}
+                    			$$
+                    			となり，この部分行列の行列式は <br>
+                    			\( 3 \times 1 - (-2) \times 2 = 3 + 4 = 7 \) <br>
+                    			である．よって，求める余因子は <br>
+                    			\(  \tilde{ A }_{23} = -1 \times 7 = -7 \) 
+                    		</li>
+                    	</ul>
+                    	</li>
+                    	<li> \( (3,1) \) 成分 \( a_{31} = 2 \) の場合の余因子
+                        <ul>
+                        	<li> 符号の部分を計算します．<br>
+                    			 \( i+j = 3+1 = 4 \) より， \( (-1)^4 = 1 \) ．
+                    		</li>
+                    		<li> 部分行列（3行目と1列目を除いた行列）は，
+                    			$$ 
+                    				\begin{pmatrix} -2 & -1 \\ 1 & -1 \end{pmatrix}
+                    			$$
+                    			となり，この部分行列の行列式は <br>
+                    			\( -2 \times (-1) - (-1) \times 1 = 2 + 1 = 3 \) <br>
+                    			である．よって，求める余因子は <br>
+                    			\(  \tilde{ A }_{31} = 1 \times 3 = 3 \) 
+                    		</li>
+                    	</ul>
+                    	</li>
+                    	<li> \( (3,2) \) 成分 \( a_{32} = 1 \) の場合の余因子
+                        <ul>
+                        	<li> 符号の部分を計算します．<br>
+                    			 \( i+j = 3+2 = 5 \) より， \( (-1)^5 = -1 \) ．
+                    		</li>
+                    		<li> 部分行列（3行目と2列目を除いた行列）は，
+                    			$$ 
+                    				\begin{pmatrix} 3 & -1 \\ 0 & -1 \end{pmatrix}
+                    			$$
+                    			となり，この部分行列の行列式は <br>
+                    			\( 3 \times (-1) - (-1) \times 0 = -3 + 0 = -3 \) <br>
+                    			である．よって，求める余因子は <br>
+                    			\(  \tilde{ A }_{32} = -1 \times (-3) = 3 \) 
+                    		</li>
+                    	</ul>
+                    	</li>
+                    	<li> \( (3,3) \) 成分 \( a_{33} = 1 \) の場合の余因子
+                        <ul>
+                        	<li> 符号の部分を計算します．<br>
+                    			 \( i+j = 3+3 = 6 \) より， \( (-1)^6 = 1 \) ．
+                    		</li>
+                    		<li> 部分行列（3行目と3列目を除いた行列）は，
+                    			$$ 
+                    				\begin{pmatrix} 3 & -2 \\ 0 & 1 \end{pmatrix}
+                    			$$
+                    			となり，この部分行列の行列式は <br>
+                    			\( 3 \times 1 - (-2) \times 0 = 3 + 0 = 3 \) <br>
+                    			である．よって，求める余因子は <br>
+                    			\(  \tilde{ A }_{33} = 1 \times 3 = 3 \) 
+                    		</li>
+                    	</ul>
+                    	</li>
+                    </ul>
+                <li> (2) 行列式 <br>
+                    「1行目に対する余因子展開」で求めてみましょう．
+            		\begin{align*}
+            			\operatorname{ det } A &= a_{11} \tilde{A}_{11} + a_{12} \tilde{A}_{12} + a_{13} \tilde{A}_{13} \\
+            				&= 3 \times 6 + (-2) \times (-2) + (-1) \times (-2) \\
+            				&= 18 + 4 + 2 \\
+            				&= 24
+            		\end{align*}
+                </li>
+                <li> (3) 逆行列 <br>
+                	\begin{align*}
+                		A^{-1} &= \frac{1}{24} %
+                			\begin{pmatrix} 6 & 9 & 3 \\ -2 & 17 & 3 \\ -2 & -7 & 3 \end{pmatrix} \\
+                			&= \begin{pmatrix} \frac{1}{4} & \frac{3}{8} & \frac{1}{8} \\ %
+                			-\frac{1}{12} & \frac{17}{24} & \frac{1}{8} \\ %
+                			-\frac{1}{12} & -\frac{7}{24} & \frac{1}{8} \end{pmatrix}
+                	\end{align*}
+                </li>
+            </ol>
+    </body>
+    
+</html>

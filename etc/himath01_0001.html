@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" >
+        <title>健康情報数学Ⅰ</title>
+        <link rel="stylesheet" href="style.css">
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <!-- mathjax 別立て式を左寄せにする (https://docs.mathjax.org/en/latest/options/output/chtml.html) -->
+        <script> MathJax = { 
+            chtml: {
+                displayAlign: 'left' 
+            }
+        };</script>
+    </head>
+    <body>
+        <h2>ベクトル・行列の演算</h2>
+        <a href="toppage.html"> 問題一覧に戻る </a>
+        <h3>問題  </h3> 
+        <p>行列\( A, B, C,\) ベクトル\( \boldsymbol{x}, \boldsymbol{y}\) について次を計算しなさい.</p>
+        $$
+            A=\left(\begin{array}{cc}
+                3 & -4 \\
+                -5 & 1 \\
+                2 & -2
+                    \end{array}\right),
+            B=\left(\begin{array}{cc}
+                -4 & 0 \\
+                1 & 5 \\
+                2 & -1
+                    \end{array}\right),
+            C=\left(\begin{array}{cc}
+                -3 & 1 \\
+                5 & -2
+                    \end{array}\right),
+             \boldsymbol{x}=\binom{1}{3}, 
+             \boldsymbol{y}=\left(\begin{array}{c}
+                1 \\
+                0 \\
+                -1
+                            \end{array}\right)
+        $$
+        <ol>
+            <li>(1) \( 5 A-2 B \)</li>
+            <li>(2) \(A C \)</li>
+            <li>(3) \((A+3 B) C\)</li>
+            <li>(4) \(B x\)</li>
+            <li>(5) \(y^T B\)</li>
+            <li>(6) \(C^2\)</li>
+            <li>(7) \(A^T B\)</li>
+            <li>(8) \(\left(A^T\right)^T\)</li>
+        </ol>
+        <details>
+            <summary>クリックして <strong>解答</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                    $$ \left(\begin{array}{cc}
+                            23 & -20 \\
+                            -27 & -5 \\
+                            6 & -8
+                        \end{array}\right)
+                    $$
+                </li>
+                <li> (2)
+                    $$ \left(\begin{array}{rr}
+                        -29 & 11 \\
+                        20 & -7 \\
+                        -16 & 6
+                        \end{array}\right)
+                    $$
+                </li>
+                <li> (3)
+                    $$ \left(\begin{array}{cc}
+                        7 & -1 \\
+                        86 & -34 \\
+                        -49 & 18
+                        \end{array}\right)
+                    $$
+                </li>
+                <li> (4)
+                    $$ \left(\begin{array}{r}
+                        -4 \\
+                        16 \\
+                        -1
+                        \end{array}\right)
+                    $$
+                </li>
+                <li> (5)
+                    $$\left(\begin{array}{ll}
+                        -6 & 1
+                        \end{array}\right)
+                    $$
+                </li>
+                <li> (6)
+                    $$\left(\begin{array}{cc}
+                        14 & -5 \\
+                        -25 & 9
+                        \end{array}\right)
+                    $$
+                </li>
+                <li> (7)
+                    $$\left(\begin{array}{cc}
+                        -13 & -27 \\
+                        13 & 7
+                        \end{array}\right)
+                    $$
+                </li>
+                <li> (8)
+                    $$\left(\begin{array}{cc}
+                    3 & -4 \\
+                    -5 & 1 \\
+                    2 & -2
+                    \end{array}\right)
+                    $$
+                </li>
+            </ol>
+        </details>
+        <br>
+
+        <details>
+            <summary> クリックして<strong>解説</strong>を見る</summary>
+            <ol>
+                <li> (1)
+                    行列 \( A \) を5倍します．
+                    \begin{align*} 5A = & 5 \times \begin{pmatrix} 3 & -4 \\ -5 & 1 \\ 2 & -2 \end{pmatrix} \\
+                        =& \begin{pmatrix} 5 \times 3 & 5 \times -4 \\ 5 \times -5 & 5 \times 1 \\ 5 \times 2 & 5 \times -2 \end{pmatrix}\\
+                        =& \begin{pmatrix} 15 & -20 \\ -25 & 5 \\ 10 & -10 \end{pmatrix}
+                    \end{align*}
+                    行列 \( B \) を2倍します．
+                    \begin{align*} 2B =& 2 \times \begin{pmatrix} -4 & 0 \\ 1 & 5 \\ 2 & -1 \end{pmatrix} \\
+                         =& \begin{pmatrix} 2 \times -4 & 2 \times 0 \\ 2 \times 1 & 2 \times 5 \\ 2 \times 2 & 2 \times -1 \end{pmatrix}\\
+                         =& \begin{pmatrix} -8 & 0 \\ 2 & 10 \\ 4 & -2 \end{pmatrix}
+                    \end{align*}
+                    \( 5A \) から \( 2B \) を引きます．
+                    \begin{align*} 5A - 2B =& \begin{pmatrix} 15 & -20 \\ -25 & 5 \\ 10 & -10 \end{pmatrix} - \begin{pmatrix} -8 & 0 \\ 2 & 10 \\ 4 & -2 \end{pmatrix}\\
+                         =& \begin{pmatrix} 15 - (-8) & -20 - 0 \\ -25 - 2 & 5 - 10 \\ 10 - 4 & -10 - (-2) \end{pmatrix}\\
+                         =& \begin{pmatrix} 23 & -20 \\ -27 & -5 \\ 6 & -8 \end{pmatrix}
+                    \end{align*}
+                </li>
+                <li> (2)
+                    行列 \( A \) と \( C \) の積 \( AC \) を計算するためには，行列 \( A \) の列数が行列 \( C \) の行数と一致している必要があります．この場合，\( A \) は \( 3 \times 2 \) 行列で，\( C \) は \( 2 \times 2 \) 行列なので，積 \( AC \) は計算可能で，その結果は \( 3 \times 2 \) 行列になります．
+                    求める行列の積を計算すると，
+                    \begin{align*} AC =& \begin{pmatrix} (3 \times -3) + (-4 \times 5) & (3 \times 1) + (-4 \times -2) \\
+                    (-5 \times -3) + (1 \times 5) & (-5 \times 1) + (1 \times -2) \\
+                    (2 \times -3) + (-2 \times 5) & (2 \times 1) + (-2 \times -2) \end{pmatrix}\\
+                     =& \begin{pmatrix}  -9 - 20 & 3 + 8\\
+                     15 + 5 & -5 - 2\\
+                     -6 - 10 & 2 + 4  \end{pmatrix}
+                    \end{align*}
+                </li>
+                <li> (3)
+                    まず，行列 \( A + 3B \) を計算してから，それに \( C \) を掛けます．<br>
+                    行列 \( A + 3B \)の計算をします．
+                    \begin{align*} 
+                        3B =& 3 \times \begin{pmatrix} -4 & 0 \\ 1 & 5 \\ 2 & -1 \end{pmatrix} \\
+                           =& \begin{pmatrix} 3 \times -4 & 3 \times 0 \\ 3 \times 1 & 3 \times 5 \\ 3 \times 2 & 3 \times -1 \end{pmatrix}\\
+                        A + 3B =& \begin{pmatrix} 3 & -4 \\ -5 & 1 \\ 2 & -2 \end{pmatrix} + \begin{pmatrix} -12 & 0 \\ 3 & 15 \\ 6 & -3 \end{pmatrix}\\
+                            =& \begin{pmatrix} 3 + (-12) & -4 + 0 \\ -5 + 3 & 1 + 15 \\ 2 + 6 & -2 + (-3) \end{pmatrix}\\
+                            =& \begin{pmatrix} -9 & -4 \\ -2 & 16 \\ 8 & -5 \end{pmatrix}
+                    \end{align*}
+                    次に，行列 \( (A + 3B) \) に \( C \) を掛けます．
+                    \begin{align*}
+                        (A + 3B)C =& \begin{pmatrix} -9 & -4 \\ -2 & 16 \\ 8 & -5 \end{pmatrix} \begin{pmatrix} -3 & 1 \\ 5 & -2 \end{pmatrix}\\
+                            =& \begin{pmatrix} (-9 \times -3) + (-4 \times 5) & (-9 \times 1) + (-4 \times -2) \\
+                            (-2 \times -3) + (16 \times 5) &  (-2 \times 1) + (16 \times -2) \\
+                            (8 \times -3) + (-5 \times 5) & (8 \times 1) + (-5 \times -2)   \end{pmatrix}\\
+                            =& \begin{pmatrix} 7 & -1 \\ 86 & -34 \\ -49 & 18 \end{pmatrix}
+                    \end{align*}
+                </li>
+                <li> (4)
+                    行列 \( B \) は \( 3 \times 2 \) 行列で，ベクトル \( \boldsymbol{x} \) は \( 2 \times 1 \) ベクトルです．
+                    よって，この積 \( B \boldsymbol{x} \) は \( 3 \times 1 \) のベクトルになります．     
+                    \begin{align*} 
+                        B \boldsymbol{x} =& \begin{pmatrix} (-4 \times 1) + (0 \times 3) \\
+                                            (1 \times 1) + (5 \times 3) \\
+                                            (2 \times 1) + (-1 \times 3)\end{pmatrix} \\
+                                         =& \begin{pmatrix} -4 + 0 \\  1 + 15 \\ 2 - 3 \end{pmatrix} \\
+                                         =& \begin{pmatrix} -4 \\ 16 \\ -1 \end{pmatrix}
+                    \end{align*}              
+                </li>
+                <li> (5)
+                    まず，ベクトル \( \boldsymbol{y} \) を転置します．
+                    $$
+                    \boldsymbol{y}^T = \begin{pmatrix} 1 & 0 & -1 \end{pmatrix}
+                    $$
+                    次に，行列の積 \( \boldsymbol{y}^T B \) を計算します．
+                    行列（ベクトル）\( \boldsymbol{y}^T\) は \( 1 \times 3 \) 行列で，行列 \( B \) は \( 3 \times 2 \) 行列です．
+                    よって，この積 \( \boldsymbol{y}^T B \) は \( 1 \times 2 \) のベクトルになります． 
+                    \begin{align*} 
+                        \boldsymbol{y}^T B =& \begin{pmatrix} 1 & 0 & -1 \end{pmatrix} \begin{pmatrix} -4 & 0 \\ 1 & 5 \\ 2 & -1 \end{pmatrix} \\
+                            =& \begin{pmatrix} (1 \times -4) + (0 \times 1) + (-1 \times 2) & (1 \times 0) + (0 \times 5) + (-1 \times -1) \end{pmatrix} \\
+                            =& \begin{pmatrix} -4 + 0 - 2 & 0 + 0 + 1 \end{pmatrix} \\
+                            =& \begin{pmatrix} -6 & 1 \end{pmatrix}
+                    \end{align*}
+                </li>
+                <li> (6)
+                    行列 \( C \) の2乗，つまり \( C  C \) を計算します．
+                    行列 \( C \) は \( 2 \times 2 \) 行列なので，この行列の積 \( C^2 = C  C \) は同じく \( 2 \times 2 \) 行列になります．
+                    \begin{align*} 
+                        C^2 =& \begin{pmatrix} -3 & 1 \\ 5 & -2 \end{pmatrix} \begin{pmatrix} -3 & 1 \\ 5 & -2 \end{pmatrix} \\
+                            =& \begin{pmatrix} (-3 \times -3) + (1 \times 5) & (-3 \times 1) + (1 \times -2)  \\
+                                (5 \times -3) + (-2 \times 5) &   (5 \times 1) + (-2 \times -2)  \end{pmatrix} \\
+                            =& \begin{pmatrix} 9 + 5 & -3 - 2\\
+                            -15 - 10 &  5 + 4 \end{pmatrix}\\
+                            =& \begin{pmatrix} 14 & -5 \\ -25 & 9 \end{pmatrix}
+                    \end{align*}
+                </li>
+                <li> (7)
+                    まず，行列 \( A \) を転置します．
+                    $$
+                        A^T = \begin{pmatrix} 3 & -5 & 2 \\ -4 & 1 & -2 \end{pmatrix}
+                    $$
+                    行列の積 \( A^T B \) を計算します．
+                    行列\( A^T \) は \( 2 \times 3 \) 行列で，行列 \( B \) は \( 3 \times 2 \) 行列です．
+                    よって，この積 \( A^T B \) は \( 2 \times 2 \) の行列になります． 
+                    \begin{align*} 
+                        A^T B =& \begin{pmatrix} 3 & -5 & 2 \\ -4 & 1 & -2 \end{pmatrix} \begin{pmatrix} -4 & 0 \\ 1 & 5 \\ 2 & -1 \end{pmatrix}\\
+                            =& \begin{pmatrix} (3 \times -4) + (-5 \times 1) + (2 \times 2) & (3 \times 0) + (-5 \times 5) + (2 \times -1)  \\
+                                    (-4 \times -4) + (1 \times 1) + (-2 \times 2) & (-4 \times 0) + (1 \times 5) + (-2 \times -1) \end{pmatrix} \\
+                            =& \begin{pmatrix} -12 - 5 + 4 & 0 - 25 - 2 \\ 16 + 1 - 4 & 0 + 5 + 2 \end{pmatrix} \\
+                            =& \begin{pmatrix} -13 & -27 \\ 13 & 7 \end{pmatrix}
+                    \end{align*}
+                </li>
+                <li> (8)
+                    行列 \( A \) の転置をもう一度転置する，つまり \((A^T)^T\) を求めます．
+                    まず，行列 \( A \) の転置 \( A^T \) を計算します．
+                    $$
+                        A^T = \begin{pmatrix} 3 & -5 & 2 \\ -4 & 1 & -2 \end{pmatrix}
+                    $$
+                    次に，\( A^T \) を再度転置して \((A^T)^T\) を求めます．
+                    $$
+                        (A^T)^T = \begin{pmatrix} 3 & -4 \\ -5 & 1 \\ 2 & -2 \end{pmatrix}
+                    $$
+                    <strong>行列を2回転置すると元の行列に戻ります</strong>．このことを知っていると，計算をしなくても求まりますね．したがって，
+                    $$
+                        (A^T)^T = A = \begin{pmatrix} 3 & -4 \\ -5 & 1 \\ 2 & -2 \end{pmatrix}
+                    $$
+                </li>
+            </ol>
+        </details>
+    </body>
+</html>
